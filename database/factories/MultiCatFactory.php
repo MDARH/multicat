@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\MultiCat;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class MultiCatFactory extends Factory
 {
@@ -22,8 +23,9 @@ class MultiCatFactory extends Factory
     public function definition()
     {
         return [
-            'cat_name' => '',
-            'parent' => ''
+            'cat_name' => $this->faker->name,
+            'slug' => str::slug($this->faker->name),
+            'parent' => $this->faker->numberBetween(0,10)
         ];
     }
 }

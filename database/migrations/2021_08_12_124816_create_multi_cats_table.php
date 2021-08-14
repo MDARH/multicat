@@ -16,6 +16,7 @@ class CreateMultiCatsTable extends Migration
         Schema::create('multi_cats', function (Blueprint $table) {
             $table->id();
             $table->string('cat_name');
+            $table->string('slug');
             $table->integer('parent')->default(0);
             $table->timestamps();
         });
