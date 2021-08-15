@@ -18,22 +18,21 @@ class MultiCat extends Model
 
 	public function child()
 	{
-		return $this->belongsTo('App\Models\MultiCat', 'parent', 'id');
+		return $this->belongsTo('App\Models\MultiCat', 'id', 'parent');
 	}
 
-    public function sub_cat(){
+    public function sub_cats()
+    {
     	return $this->hasMany('App\Models\MultiCat', 'parent', 'id');
-    }
-
-    public function main_cat(){
-        return $this->hasMany('App\Models\MultiCat', 'parent', 'id');
     }
 
 	public function multicat()
 	{
-		if($this->parent) {
-			return $this->cat_name ;
-		}
+		if($this->child) {
+			return 'main cat where id is 0' ;
+		}else{
+            return 'parent > parent cat';
+        }
 	}
 
 }
