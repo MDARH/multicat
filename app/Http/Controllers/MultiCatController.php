@@ -14,8 +14,9 @@ class MultiCatController extends Controller
      */
     public function index()
     {
-        $categories = MultiCat::All();
-        return view('welcome', compact('categories'));
+        $categories = MultiCat::where('parent', 0)->get();
+        $all_cats = MultiCat::all();
+        return view('welcome', compact('categories', 'all_cats'));
     }
 
     /**

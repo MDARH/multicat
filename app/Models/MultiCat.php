@@ -23,13 +23,13 @@ class MultiCat extends Model
 
     public function sub_cats()
     {
-    	return $this->hasMany('App\Models\MultiCat', 'parent', 'id');
+    	return $this->hasMany(MultiCat::class, 'parent');
     }
 
 	public function multicat()
 	{
-		if($this->child) {
-			return 'main cat where id is 0' ;
+		if($this->sub_cats) {
+			return MultiCat::where('parent', '') . ' > ' . 'Parent' ;
 		}else{
             return 'parent > parent cat';
         }

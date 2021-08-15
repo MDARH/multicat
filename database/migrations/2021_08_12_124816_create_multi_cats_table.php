@@ -17,7 +17,7 @@ class CreateMultiCatsTable extends Migration
             $table->id();
             $table->string('cat_name');
             $table->string('slug');
-            $table->integer('parent')->default(0);
+            $table->integer('parent')->nullable();
             $table->timestamps();
         });
     }

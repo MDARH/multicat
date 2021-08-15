@@ -17,9 +17,22 @@
             @foreach ($categories as $cat)
             <tr>
                 <td>
-                    {{ $cat->multicat() }}
+                    {{ $cat->cat_name }}
                 </td>
+                @foreach ($cat->sub_cats as $sub)
+                <td>
+                        {{ $sub->cat_name }}
+                </td>
+                @endforeach
             </tr>
+            @endforeach
+        </table>
+
+        <hr>
+
+        <table class="table table-hover">
+            @foreach ($all_cats as $allcat)
+                {{ $allcat->multicat() }}
             @endforeach
         </table>
 
